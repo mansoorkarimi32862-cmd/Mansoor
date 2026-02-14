@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html lang ="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Music portfolio</title>
+<link rel="stylesheet" href="music.css">
+</head>
+<body>
+
+<section id="music-preview">
+
+<div class="music-hero">
+<img src="p/mklogo.png" alt="Music Hero Image" class="album-cover">
+</div>
+
+<div class="music-button-container">
+<a href="music.html" class="enter-music-btn">
+Enter Music Experience
+</a>
+</div>
+
+<div class="equalizer">
+<div class="bar"></div>
+<div class="bar"></div>
+<div class="bar"></div>
+<div class="bar"></div>
+<div class="bar"></div>
+<div class="bar"></div>
+<div class="bar"></div>
+</div>
+
+<audio id="audio-player" controls style="display:none;">
+<source src="" type="audio/mpeg">
+</audio>
+
+</section>
+<script>
+const audioPlayer = document.getElementById('audio-player');
+const enterBtn = document.querySelector('.enter-music-btn');
+const albumCover = document.querySelector('.album-cover');
+const equalizer = document.querySelector('.equalizer');
+
+const numberOfBars = 20;
+equalizer.innerHTML = ";
+for (let i = 0; i< numberOfBars; i++) {
+const bar = document.createElement('div');
+bar.classList.add('bar');
+equalizer.appendChild(bar);
+}
+
+const bars = document.querySelectorAll('.equalizer .bar');
+
+enterBtn.addEventListener('click', (e) => {
+e.preventDefault();
+audioPlayer.play();
+albumCover.classList.add('rotate');
+});
+
+let rotation = 0;
+function rotateAlbum() {
+rotation += 0.3;
+albumCover.style.transform = 'rotate(${rotation}deg)';
+requestAnimationFrame(rotateAlbum);
+}
+rotateAlbum();
+
+function animateBars() {
+bars.forEach(bar => {
+const height = Math.random() * 60+20;
+bar.style.height = '${height}px';
+});
+requestAnimationFrame(animateBars);
+}
+animateBars();
+</script>
+</body>
+</html>
