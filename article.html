@@ -1,0 +1,133 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Articles</title>
+    <!-- CSS جداگانه بعداً لینک می‌کنیم -->
+<link href="article.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+
+    <div class="articles-container">
+        <!-- مقاله اول -->
+        <div class="article-box" id="article1">
+            <!-- تصویر مقاله -->
+            <!-- <img src="path/to/image1.jpg" alt="Article 1 Image"> -->
+            <!-- عنوان مقاله -->
+            <h2 class="article-title">Freelancing and Its Historical Background</h2>
+            <!-- خلاصه مقاله -->
+            <div class="article-abstract">
+                <!-- اینجا Abstract مقاله را وارد کن -->
+                <p>Freelancing, as a modern employment model, has attracted significant attention from professionals and the younger generation...</p>
+            </div>
+            <!-- کلمات کلیدی -->
+            <div class="article-keywords">
+                <!-- اینجا Keywords مقاله را وارد کن -->
+                <p>Freelancing, History of Freelancing, Digital Labor Market, Flexible Employment, Freelancing Platforms</p>
+            </div>
+            <!-- بدنه مقاله -->
+            <div class="article-body">
+                <!-- اینجا Body مقاله را وارد کن -->
+                <p>Did you know that although freelancing is widely recognized in the Internet era, its roots are much older? ...</p>
+            </div>
+            <!-- نتیجه گیری -->
+            <div class="article-conclusion">
+                <!-- اینجا Conclusion مقاله را وارد کن -->
+                <p>Despite its origins in the 19th century, freelancing has today become one of the most important and effective employment models...</p>
+            </div>
+            <!-- جمع بندی کوتاه -->
+            <div class="article-summary">
+                <!-- اینجا Summary مقاله را وارد کن -->
+                <p>This article examined the history of freelancing, its growth in the global market, the advantages and challenges of this employment model...</p>
+            </div>
+        </div>
+
+        <!-- مقاله دوم -->
+        <div class="article-box" id="article2">
+            <!-- تصویر مقاله -->
+            <!-- <img src="path/to/image2.jpg" alt="Article 2 Image"> -->
+            <!-- عنوان مقاله -->
+            <h2 class="article-title">Another Article Title Here</h2>
+            <!-- خلاصه مقاله -->
+            <div class="article-abstract">
+                <!-- اینجا Abstract مقاله را وارد کن -->
+                <p>Abstract text for the second article goes here...</p>
+            </div>
+            <!-- کلمات کلیدی -->
+            <div class="article-keywords">
+                <!-- اینجا Keywords مقاله را وارد کن -->
+                <p>Keyword1, Keyword2, Keyword3</p>
+            </div>
+            <!-- بدنه مقاله -->
+            <div class="article-body">
+                <!-- اینجا Body مقاله را وارد کن -->
+                <p>Body text for the second article goes here...</p>
+            </div>
+            <!-- نتیجه گیری -->
+            <div class="article-conclusion">
+                <!-- اینجا Conclusion مقاله را وارد کن -->
+                <p>Conclusion text for the second article goes here...</p>
+            </div>
+            <!-- جمع بندی کوتاه -->
+            <div class="article-summary">
+                <!-- اینجا Summary مقاله را وارد کن -->
+                <p>Summary text for the second article goes here...</p>
+            </div>
+        </div>
+
+        <!-- اینجا می‌توانی مقاله سوم و بیشتر اضافه کنی -->
+
+    </div>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    // همه باکس‌های مقاله را انتخاب کن
+    const articles = document.querySelectorAll('.article-box');
+
+    // ساخت باکس نمایش متن کامل پایین صفحه
+    const displayBox = document.createElement('div');
+    displayBox.id = 'article-display';
+    displayBox.style.padding = '20px';
+    displayBox.style.borderTop = '2px solid #333';
+    displayBox.style.marginTop = '30px';
+    displayBox.style.backgroundColor = '#f9f9f9';
+    displayBox.style.display = 'none'; // ابتدا مخفی است
+    document.body.appendChild(displayBox);
+
+    let openArticle = null; // مقاله باز شده فعلی
+
+    articles.forEach(article => {
+        article.style.cursor = 'pointer'; // نشانگر دست روی مقاله
+        article.addEventListener('click', function() {
+            const articleContent = `
+                <h2>${article.querySelector('.article-title').innerHTML}</h2>
+                <h3>Abstract</h3>
+                <p>${article.querySelector('.article-abstract').innerHTML}</p>
+                <h3>Keywords</h3>
+                <p>${article.querySelector('.article-keywords').innerHTML}</p>
+                <h3>Body</h3>
+                <p>${article.querySelector('.article-body').innerHTML}</p>
+                <h3>Conclusion</h3>
+                <p>${article.querySelector('.article-conclusion').innerHTML}</p>
+                <h3>Summary</h3>
+                <p>${article.querySelector('.article-summary').innerHTML}</p>
+            `;
+
+            // اگر همان مقاله دوباره کلیک شد، بسته شود
+            if(openArticle === article) {
+                displayBox.style.display = 'none';
+                displayBox.innerHTML = '';
+                openArticle = null;
+            } else {
+                displayBox.innerHTML = articleContent;
+                displayBox.style.display = 'block';
+                openArticle = article;
+                // اسکرول به باکس نمایش مقاله
+                displayBox.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    });
+});
+</script>
+</body>
+</html>

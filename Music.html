@@ -1,78 +1,274 @@
 ﻿<!DOCTYPE html>
-<html lang ="en">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>My Music portfolio</title>
-<link rel="stylesheet" href="music.css">
+<title>Music Player Universe</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+<style>
+/* ================ GLOBAL ================= */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Orbitron', sans-serif;
+    background: linear-gradient(135deg, #0a0a0a, #1a1a2e, #162447);
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+.main-wrapper {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+}
+
+/* ================ TRACKS ================= */
+.tracks-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 20px;
+    width: 100%;
+    max-width: 1200px;
+}
+.track {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 10px;
+    border-radius: 15px;
+    background: rgba(0, 255, 234, 0.05);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+    box-shadow: 0 0 5px rgba(0,255,234,0.2);
+}
+.track:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 20px #00ffea, 0 0 40px #00ffea;
+}
+.track h3 {
+    margin-top: 10px;
+    font-size: 0.95rem;
+    color: #00ffea;
+}
+.mini-equalizer {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 4px;
+    width: 100%;
+    height: 50px;
+    margin-bottom: 10px;
+}
+.mini-equalizer span {
+    width: 4px;
+    height: 10px;
+    background: linear-gradient(to top, #0ffaea, #005f5f);
+    border-radius: 2px;
+    display: inline-block;
+    transition: height 0.1s ease;
+}
+
+/* ================ PLAYER ================= */
+.player-container {
+    margin-top: 40px;
+    padding: 20px;
+    border-radius: 15px;
+    background: rgba(0,255,234,0.05);
+    box-shadow: 0 0 10px #00ffea;
+    width: 100%;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.player-container h2 {
+    margin-bottom: 15px;
+    color: #00ffea;
+    text-align: center;
+}
+.audio-controls {
+    display: flex;
+    gap: 20px;
+    margin-top: 15px;
+}
+.audio-controls button {
+    padding: 10px 15px;
+    background: #00ffea;
+    color: #000;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+}
+.audio-controls button:hover {
+    background: #0ff;
+}
+audio {
+    width: 100%;
+    margin-top: 10px;
+}
+
+/* ================ FOOTER ================= */
+.footer {
+    width: 100%;
+    padding: 20px;
+    background: linear-gradient(135deg, #111827, #0a0a0a);
+    text-align: center;
+    border-top: 2px solid #00ffea;
+}
+.footer p {
+    margin: 5px 0 0;
+    color: #fff;
+    font-size: 0.95rem;
+}
+</style>
 </head>
 <body>
 
-<section id="music-preview">
+<!-- ===================== PROFESSIONAL NAVBAR ===================== -->
+<nav class="main-navbar">
+    <div class="nav-wrapper">
 
-<div class="music-hero">
-<img src="p/mklogo.png" alt="Music Hero Image" class="album-cover">
-</div>
+        <!-- لوگو -->
+        <div class="nav-logo">
+            Mansoor Portfolio
+        </div>
 
-<div class="music-button-container">
-<a href="music.html" class="enter-music-btn">
-Enter Music Experience
-</a>
-</div>
+        <!-- دکمه موبایل -->
+        <div class="menu-toggle" id="mobile-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
 
-<div class="equalizer">
-<div class="bar"></div>
-<div class="bar"></div>
-<div class="bar"></div>
-<div class="bar"></div>
-<div class="bar"></div>
-<div class="bar"></div>
-<div class="bar"></div>
-</div>
+        <!-- لینک‌ها -->
+        <ul class="nav-links">
+            <!-- اینجا لینک صفحه اصلی را وارد کن -->
+            <li><a href="index.html">Home</a></li>
 
-<audio id="audio-player" controls style="display:none;">
-<source src="" type="audio/mpeg">
-</audio>
+            <!-- اینجا لینک صفحه مقالات را وارد کن -->
+            <li><a href="articles.html">Articles</a></li>
 
-</section>
+            <!-- اینجا لینک درباره من را وارد کن -->
+            <li><a href="about.html">About</a></li>
+
+            <!-- اینجا لینک پروژه‌ها را وارد کن -->
+            <li><a href="projects.html">Projects</a></li>
+
+            <!-- اینجا لینک تماس را وارد کن -->
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+
+    </div>
+</nav>
+<!-- ===================== END NAVBAR ===================== -->
+
+<main class="main-wrapper">
+    <section class="tracks-container">
+        <!-- آهنگ ها -->
+        <!-- نام فایل در data-audio قرار دارد -->
+        <a href="#" class="track" data-audio="Musics/m1.mp3">
+            <div class="mini-equalizer"><span></span><span></span><span></span><span></span><span></span></div>
+            <h3>m1.mp3</h3>
+        </a>
+        <a href="#" class="track" data-audio="Musics/m2.mp3">
+            <div class="mini-equalizer"><span></span><span></span><span></span><span></span><span></span></div>
+            <h3>m2.mp3</h3>
+        </a>
+        <a href="#" class="track" data-audio="Musics/m3.mp3">
+            <div class="mini-equalizer"><span></span><span></span><span></span><span></span><span></span></div>
+            <h3>m3.mp3</h3>
+        </a>
+        <a href="#" class="track" data-audio="Musics/m4.mp3">
+            <div class="mini-equalizer"><span></span><span></span><span></span><span></span><span></span></div>
+            <h3>m4.mp3</h3>
+        </a>
+        <a href="#" class="track" data-audio="Musics/m5.mp3">
+            <div class="mini-equalizer"><span></span><span></span><span></span><span></span><span></span></div>
+            <h3>m5.mp3</h3>
+        </a>
+    </section>
+
+    <div class="player-container">
+        <h2 id="player-title">Select a track to play</h2>
+        <audio id="audio-player" controls>
+            Your browser does not support the audio element.
+        </audio>
+        <div class="audio-controls">
+            <button id="prev">⏮ Prev</button>
+            <button id="play">▶ Play</button>
+            <button id="pause">⏸ Pause</button>
+            <button id="next">⏭ Next</button>
+        </div>
+    </div>
+</main>
+
+<footer class="footer">
+    <p>Advanced JS Music Player · Audio Reactive Visualization</p>
+</footer>
+
 <script>
+// ================= SELECT ELEMENTS =================
+const tracks = document.querySelectorAll('.track');
 const audioPlayer = document.getElementById('audio-player');
-const enterBtn = document.querySelector('.enter-music-btn');
-const albumCover = document.querySelector('.album-cover');
-const equalizer = document.querySelector('.equalizer');
+const playerTitle = document.getElementById('player-title');
+const playBtn = document.getElementById('play');
+const pauseBtn = document.getElementById('pause');
+const prevBtn = document.getElementById('prev');
+const nextBtn = document.getElementById('next');
 
-const numberOfBars = 20;
-equalizer.innerHTML = ";
-for (let i = 0; i< numberOfBars; i++) {
-const bar = document.createElement('div');
-bar.classList.add('bar');
-equalizer.appendChild(bar);
+// جمع کردن مسیر آهنگ‌ها
+const trackFiles = Array.from(tracks).map(track => track.dataset.audio);
+let currentIndex = -1;
+
+// ============ MINI EQUALIZER =================
+function animateEqualizers() {
+    tracks.forEach(track => {
+        const spans = track.querySelectorAll('.mini-equalizer span');
+        spans.forEach(span => {
+            const height = Math.floor(Math.random() * 40) + 10;
+            span.style.height = `${height}px`;
+        });
+    });
+    requestAnimationFrame(animateEqualizers);
+}
+animateEqualizers();
+
+// ============ PLAY TRACK =================
+function playTrack(index) {
+    if (index < 0 || index >= trackFiles.length) return;
+    currentIndex = index;
+    audioPlayer.src = trackFiles[index];
+    playerTitle.textContent = trackFiles[index];
+    audioPlayer.play();
 }
 
-const bars = document.querySelectorAll('.equalizer .bar');
-
-enterBtn.addEventListener('click', (e) => {
-e.preventDefault();
-audioPlayer.play();
-albumCover.classList.add('rotate');
+// ================= CLICK TRACK =================
+tracks.forEach((track, idx) => {
+    track.addEventListener('click', e => {
+        e.preventDefault();
+        playTrack(idx);
+    });
 });
 
-let rotation = 0;
-function rotateAlbum() {
-rotation += 0.3;
-albumCover.style.transform = 'rotate(${rotation}deg)';
-requestAnimationFrame(rotateAlbum);
-}
-rotateAlbum();
-
-function animateBars() {
-bars.forEach(bar => {
-const height = Math.random() * 60+20;
-bar.style.height = '${height}px';
+// ================= CONTROL BUTTONS =================
+playBtn.addEventListener('click', () => audioPlayer.play());
+pauseBtn.addEventListener('click', () => audioPlayer.pause());
+prevBtn.addEventListener('click', () => {
+    let prevIndex = currentIndex - 1;
+    if (prevIndex < 0) prevIndex = trackFiles.length - 1;
+    playTrack(prevIndex);
 });
-requestAnimationFrame(animateBars);
-}
-animateBars();
+nextBtn.addEventListener('click', () => {
+    let nextIndex = currentIndex + 1;
+    if (nextIndex >= trackFiles.length) nextIndex = 0;
+    playTrack(nextIndex);
+});
 </script>
+
 </body>
-</html>
+</
