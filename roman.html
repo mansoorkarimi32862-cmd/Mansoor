@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Novels | Mansoor Portfolio</title>
+<link rel="stylesheet" href="romanlast.css">
+</head>
+<body>
+
+<!-- ===== Modern Animated Navbar ===== -->
+<header class="navbar" id="navbar">
+    <div class="nav-container">
+        <div class="logo">YourBrand</div>
+        <nav class="nav-links">
+            <a href="index.html" class="nav-btn">Home</a>
+            <a href="certificate.html" class="nav-btn">Certificate</a>
+            <a href="music.html" class="nav-btn">Music</a>
+            <a href="article.html" class="nav-btn">Article</a>
+            <a href="roman.html" class="nav-btn">Roman</a>
+        </nav>
+    </div>
+</header>
+
+<!-- صفحه محتوا -->
+<div class="page-content">
+    <div style="height:50px;"></div> <!-- فاصله کوچک جبران navbar -->
+</div>
+
+<div class="novel-container">
+
+  <header class="novel-header">
+    <h1>My Novels Collection</h1>
+    <p>Professional and immersive reading experience</p>
+  </header>
+
+  <section class="novel-selection">
+    <div class="novel-buttons">
+      <button class="novel-btn" data-novel="novel1">The Lost Kingdom</button>
+      <button class="novel-btn" data-novel="novel2">Shadows of Time</button>
+      <button class="novel-btn" data-novel="novel3">Whispers in the Wind</button>
+    </div>
+
+    <div class="chapter-buttons" id="chapterButtons">
+      <button class="chapter-btn" data-chapter="chapter1">Chapter 1</button>
+      <button class="chapter-btn" data-chapter="chapter2">Chapter 2</button>
+      <button class="chapter-btn" data-chapter="chapter3">Chapter 3</button>
+      <button class="chapter-btn" data-chapter="chapter4">Chapter 4</button>
+      <button class="chapter-btn" data-chapter="chapter5">Chapter 5</button>
+    </div>
+  </section>
+
+  <section class="novel-display">
+    <div id="novelContent">
+      <h2>Welcome to The Lost Kingdom</h2>
+      <p>Choose a chapter to start reading...</p>
+    </div>
+  </section>
+
+</div>
+
+<script>
+const novelContent = document.getElementById('novelContent');
+const novelButtons = document.querySelectorAll('.novel-btn');
+const chapterButtons = document.querySelectorAll('.chapter-btn');
+
+const novels = {
+  novel1: {
+    title: "The Lost Kingdom",
+    chapters: {
+      chapter1: "Chapter 1: The journey begins in a misty land...",
+      chapter2: "Chapter 2: Encounters with mysterious allies...",
+      chapter3: "Chapter 3: Betrayal shakes the kingdom...",
+      chapter4: "Chapter 4: The final battle approaches...",
+      chapter5: "Chapter 5: Resolution and a new dawn..."
+    }
+  },
+  novel2: { title: "Shadows of Time", chapters: null },
+  novel3: { title: "Whispers in the Wind", chapters: null }
+};
+
+novelButtons.forEach(btn => {
+  btn.addEventListener('click', () => {
+    const novelKey = btn.getAttribute('data-novel');
+    if (novels[novelKey].chapters) {
+      novelContent.innerHTML = `<h2>${novels[novelKey].title}</h2><p>Choose a chapter to start reading...</p>`;
+      document.getElementById('chapterButtons').style.display = 'flex';
+    } else {
+      novelContent.innerHTML = `<h2>${novels[novelKey].title}</h2><p>Coming soon...</p>`;
+      document.getElementById('chapterButtons').style.display = 'none';
+    }
+  });
+});
+
+chapterButtons.forEach(btn => {
+  btn.addEventListener('click', () => {
+    const chapterKey = btn.getAttribute('data-chapter');
+    const novelTitle = "The Lost Kingdom";
+    const text = novels.novel1.chapters[chapterKey];
+    if(text){
+      novelContent.innerHTML = `<h2>${novelTitle} - ${btn.textContent}</h2><p>${text}</p>`;
+    }
+  });
+});
+
+// Navbar behavior
+const navbar = document.getElementById("navbar");
+const navButtons = document.querySelectorAll(".nav-btn");
+
+window.addEventListener("scroll", () => {
+    if (window.scrollY > 50) navbar.classList.add("scrolled");
+    else navbar.classList.remove("scrolled");
+});
+
+navButtons.forEach(button => {
+    button.addEventListener("click", function () {
+        navButtons.forEach(btn => btn.classList.remove("active"));
+        this.classList.add("active");
+        this.style.transform = "scale(0.95)";
+        setTimeout(() => { this.style.transform = "scale(1)"; }, 150);
+    });
+});
+</script>
+
+</body>
+</html>

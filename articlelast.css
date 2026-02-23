@@ -1,0 +1,212 @@
+@charset "utf-8";
+
+/* ===============================
+   Global Reset & Fonts
+================================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #1e1e2f, #2a2a3f);
+    color: #fff;
+    overflow-x: hidden;
+    padding-top: 0; /* هیچ فاصله اضافی برای Navbar */
+}
+
+/* ===============================
+   Navbar Styles
+================================= */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    padding: 25px 0;
+    background: rgba(20, 20, 30, 0.7);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    transition: all 0.4s ease;
+}
+
+.navbar.scrolled {
+    padding: 12px 0;
+    background: rgba(15, 15, 25, 0.95);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 0 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: 600;
+    color: #f3f4f6;
+    transition: all 0.3s ease;
+}
+
+.navbar.scrolled .logo {
+    font-size: 18px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 20px;
+}
+
+.nav-btn {
+    text-decoration: none;
+    padding: 10px 22px;
+    border-radius: 30px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #d1d5db;
+    background: rgba(255, 255, 255, 0.05);
+    transition: all 0.3s ease;
+}
+
+.nav-btn:hover {
+    color: white;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(168, 85, 247, 0.4);
+    transform: translateY(-2px);
+}
+
+.navbar.scrolled .nav-btn {
+    padding: 7px 18px;
+    font-size: 13px;
+}
+
+.nav-btn.active {
+    color: white;
+    background: linear-gradient(135deg, #2e1065, #3b0764);
+}
+
+/* ===============================
+   Articles Header
+================================= */
+.articles-header {
+    text-align: center;
+    margin-top: 80px; /* بعد از Navbar */
+    margin-bottom: 50px;
+}
+
+.articles-header h1 {
+    font-size: 2.8rem;
+    color: #cfa6ff;
+    text-shadow: 0 0 12px #b484ff;
+    margin-bottom: 10px;
+}
+
+.articles-header p {
+    font-size: 1.2rem;
+    color: #ddd;
+}
+
+/* ===============================
+   Article List & Cards
+================================= */
+.articles-main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+}
+
+.article-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    width: 90%;
+    max-width: 1200px;
+}
+
+.article-card {
+    background: rgba(40, 40, 55, 0.85);
+    border-radius: 12px;
+    padding: 20px 25px;
+    box-shadow: 0 8px 20px rgba(207, 166, 255, 0.5);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-left: 5px solid transparent;
+}
+
+.article-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(207, 166, 255, 0.7);
+    border-left: 5px solid #cfa6ff;
+}
+
+.article-card h3 {
+    font-size: 1.4rem;
+    margin-bottom: 8px;
+}
+
+.article-card p {
+    font-size: 0.95rem;
+    color: #ccc;
+}
+
+.article-card.active {
+    border-left: 5px solid #ff94c2;
+    background: rgba(50, 40, 70, 0.95);
+}
+
+/* ===============================
+   Article Preview
+================================= */
+.article-preview {
+    width: 95%;
+    max-width: 1000px;
+    background: rgba(30, 30, 45, 0.85);
+    border-radius: 15px;
+    padding: 30px 40px;
+    box-shadow: 0 0 25px rgba(207, 166, 255, 0.6);
+    transition: all 0.4s ease;
+}
+
+.article-preview::before {
+    content: "Scroll to read full article";
+    display: block;
+    font-size: 0.85rem;
+    color: #aaa;
+    margin-bottom: 12px;
+}
+
+.article-preview h2 { color: #ff94c2; font-size: 2rem; margin-bottom: 15px; text-shadow:0 0 10px #b484ff; }
+.article-preview h3 { color: #cfa6ff; font-size:1.3rem; margin-top:20px; margin-bottom:8px; }
+.article-preview p { font-size:1rem; line-height:1.7; color:#ddd; }
+
+/* ===============================
+   Responsive Design
+================================= */
+@media (max-width:1024px) {
+    .articles-header h1{ font-size:2.4rem;}
+    .articles-header p{ font-size:1.1rem;}
+    .article-card h3{ font-size:1.25rem;}
+    .article-card p{ font-size:0.9rem;}
+    .article-preview h2{ font-size:1.8rem;}
+    .article-preview h3{ font-size:1.1rem;}
+}
+
+@media (max-width:768px){
+    .article-list{ grid-template-columns:1fr;}
+    .article-preview{ padding:20px 25px;}
+}
+
+@media (max-width:480px){
+    .articles-header h1{ font-size:1.9rem;}
+    .articles-header p{ font-size:1rem;}
+    .article-preview h2{ font-size:1.5rem;}
+    .article-preview h3{ font-size:1rem;}
+    .article-preview p{ font-size:0.9rem;}
+}

@@ -1,133 +1,167 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Articles</title>
-    <!-- CSS جداگانه بعداً لینک می‌کنیم -->
-<link href="article.css" type="text/css" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scientific Articles | Mansoor Portfolio</title>
+<link rel="stylesheet" href="articlelast.css">
 </head>
 <body>
 
-    <div class="articles-container">
-        <!-- مقاله اول -->
-        <div class="article-box" id="article1">
-            <!-- تصویر مقاله -->
-            <!-- <img src="path/to/image1.jpg" alt="Article 1 Image"> -->
-            <!-- عنوان مقاله -->
-            <h2 class="article-title">Freelancing and Its Historical Background</h2>
-            <!-- خلاصه مقاله -->
-            <div class="article-abstract">
-                <!-- اینجا Abstract مقاله را وارد کن -->
-                <p>Freelancing, as a modern employment model, has attracted significant attention from professionals and the younger generation...</p>
-            </div>
-            <!-- کلمات کلیدی -->
-            <div class="article-keywords">
-                <!-- اینجا Keywords مقاله را وارد کن -->
-                <p>Freelancing, History of Freelancing, Digital Labor Market, Flexible Employment, Freelancing Platforms</p>
-            </div>
-            <!-- بدنه مقاله -->
-            <div class="article-body">
-                <!-- اینجا Body مقاله را وارد کن -->
-                <p>Did you know that although freelancing is widely recognized in the Internet era, its roots are much older? ...</p>
-            </div>
-            <!-- نتیجه گیری -->
-            <div class="article-conclusion">
-                <!-- اینجا Conclusion مقاله را وارد کن -->
-                <p>Despite its origins in the 19th century, freelancing has today become one of the most important and effective employment models...</p>
-            </div>
-            <!-- جمع بندی کوتاه -->
-            <div class="article-summary">
-                <!-- اینجا Summary مقاله را وارد کن -->
-                <p>This article examined the history of freelancing, its growth in the global market, the advantages and challenges of this employment model...</p>
-            </div>
-        </div>
+<!-- ===== Navbar ===== -->
+<header class="navbar" id="navbar">
+    <div class="nav-container">
+        <div class="logo">YourBrand</div>
+        <nav class="nav-links">
+            <a href="index.html" class="nav-btn">Home</a>
+            <a href="certificate.html" class="nav-btn">Certificate</a>
+            <a href="music.html" class="nav-btn">Music</a>
+            <a href="article.html" class="nav-btn active">Article</a>
+            <a href="roman.html" class="nav-btn">Roman</a>
+        </nav>
+    </div>
+</header>
 
-        <!-- مقاله دوم -->
-        <div class="article-box" id="article2">
-            <!-- تصویر مقاله -->
-            <!-- <img src="path/to/image2.jpg" alt="Article 2 Image"> -->
-            <!-- عنوان مقاله -->
-            <h2 class="article-title">Another Article Title Here</h2>
-            <!-- خلاصه مقاله -->
-            <div class="article-abstract">
-                <!-- اینجا Abstract مقاله را وارد کن -->
-                <p>Abstract text for the second article goes here...</p>
-            </div>
-            <!-- کلمات کلیدی -->
-            <div class="article-keywords">
-                <!-- اینجا Keywords مقاله را وارد کن -->
-                <p>Keyword1, Keyword2, Keyword3</p>
-            </div>
-            <!-- بدنه مقاله -->
-            <div class="article-body">
-                <!-- اینجا Body مقاله را وارد کن -->
-                <p>Body text for the second article goes here...</p>
-            </div>
-            <!-- نتیجه گیری -->
-            <div class="article-conclusion">
-                <!-- اینجا Conclusion مقاله را وارد کن -->
-                <p>Conclusion text for the second article goes here...</p>
-            </div>
-            <!-- جمع بندی کوتاه -->
-            <div class="article-summary">
-                <!-- اینجا Summary مقاله را وارد کن -->
-                <p>Summary text for the second article goes here...</p>
-            </div>
-        </div>
+<!-- ===== Page Content ===== -->
+<div class="page-content">
+    <!-- Articles Header -->
+    <div class="articles-header">
+        <h1>Scientific Articles</h1>
+        <p>Verified, Professional, and Well-Structured Research Articles</p>
+    </div>
 
-        <!-- اینجا می‌توانی مقاله سوم و بیشتر اضافه کنی -->
+    <!-- Articles Main Section -->
+    <div class="articles-main">
+
+        <!-- ===== Article List ===== -->
+        <section class="article-list">
+            <div class="article-card" data-article="article1">
+                <h3>Artificial Intelligence in Modern Healthcare</h3>
+                <p>Author: Mansoor Karimi | Year: 2025</p>
+            </div>
+            <div class="article-card" data-article="article2">
+                <h3>Data Security in Cloud Computing</h3>
+                <p>Author: Mansoor Karimi | Year: 2024</p>
+            </div>
+            <div class="article-card" data-article="article3">
+                <h3>Human-Computer Interaction Trends</h3>
+                <p>Author: Mansoor Karimi | Year: 2025</p>
+            </div>
+            <div class="article-card" data-article="article4">
+                <h3>Quantum Computing for Beginners</h3>
+                <p>Author: Mansoor Karimi | Year: 2023</p>
+            </div>
+        </section>
+
+        <!-- ===== Article Preview ===== -->
+        <section class="article-preview">
+            <div id="articleContent">
+                <h2>Select an article to preview</h2>
+            </div>
+        </section>
 
     </div>
+</div>
+
 <script>
-document.addEventListener("DOMContentLoaded", function() {
-    // همه باکس‌های مقاله را انتخاب کن
-    const articles = document.querySelectorAll('.article-box');
+// ===== Article Data =====
+const articles = {
+    article1: {
+        /* ===== Title ===== */
+        title: "Artificial Intelligence in Modern Healthcare",
+        /* ===== Abstract ===== */
+        abstract: "This paper explores the transformative role of AI in healthcare, highlighting diagnostic, predictive, and treatment applications.",
+        /* ===== Keywords ===== */
+        keywords: "AI, Healthcare, Machine Learning, Diagnosis",
+        /* ===== Body ===== */
+        body: "Artificial Intelligence (AI) is revolutionizing healthcare by enabling precise diagnostics, personalized treatment, and predictive analytics. Hospitals are increasingly using AI-driven tools for imaging, patient monitoring, and data analysis...",
+        /* ===== Conclusion ===== */
+        conclusion: "AI technologies are enhancing patient care quality and operational efficiency, yet ethical and privacy considerations remain critical.",
+        /* ===== Summary ===== */
+        summary: "This research highlights the adoption of AI in healthcare, emphasizing both its benefits and the challenges to overcome."
+    },
+    article2: {
+        title: "Data Security in Cloud Computing",
+        abstract: "Cloud computing offers scalability and flexibility but introduces new data security challenges that must be managed carefully.",
+        keywords: "Cloud Computing, Security, Encryption, Privacy",
+        body: "Cloud computing has become integral to modern IT infrastructure, but security risks such as unauthorized access, data breaches, and compliance issues remain significant. Encryption, access control, and continuous monitoring are vital...",
+        conclusion: "Ensuring robust security in cloud environments requires a combination of technological measures and governance policies.",
+        summary: "This paper reviews security threats in cloud computing and offers best practices to safeguard sensitive data."
+    },
+    article3: {
+        title: "Human-Computer Interaction Trends",
+        abstract: "This paper examines recent trends in HCI, focusing on usability, accessibility, and emerging interaction paradigms.",
+        keywords: "HCI, User Experience, Accessibility, Interaction Design",
+        body: "Human-Computer Interaction (HCI) is evolving with the advent of new technologies like AR/VR, voice assistants, and adaptive interfaces. Understanding user needs and behavior is crucial for designing intuitive systems...",
+        conclusion: "Future HCI research should prioritize inclusive, efficient, and natural interaction methods.",
+        summary: "The study explores innovative HCI trends and emphasizes the importance of user-centered design."
+    },
+    article4: {
+        title: "Quantum Computing for Beginners",
+        abstract: "An introductory overview of quantum computing, its principles, and potential applications.",
+        keywords: "Quantum Computing, Qubits, Superposition, Algorithms",
+        body: "Quantum computing leverages principles of quantum mechanics, including superposition and entanglement, to perform computations far beyond classical computers' capabilities. Beginners must understand qubits, gates, and basic algorithms...",
+        conclusion: "While quantum computing is still emerging, it promises revolutionary advancements in problem-solving and computational efficiency.",
+        summary: "This article introduces fundamental concepts of quantum computing for newcomers and explores its transformative potential."
+    }
+};
 
-    // ساخت باکس نمایش متن کامل پایین صفحه
-    const displayBox = document.createElement('div');
-    displayBox.id = 'article-display';
-    displayBox.style.padding = '20px';
-    displayBox.style.borderTop = '2px solid #333';
-    displayBox.style.marginTop = '30px';
-    displayBox.style.backgroundColor = '#f9f9f9';
-    displayBox.style.display = 'none'; // ابتدا مخفی است
-    document.body.appendChild(displayBox);
+// ===== Article Preview Function =====
+const cards = document.querySelectorAll(".article-card");
+const preview = document.getElementById("articleContent");
 
-    let openArticle = null; // مقاله باز شده فعلی
+function showArticle(key) {
+    const art = articles[key];
+    preview.innerHTML = `
+        <!-- Title -->
+        <h2>${art.title}</h2>
+        <!-- Abstract -->
+        <h3>Abstract</h3>
+        <p>${art.abstract}</p>
+        <!-- Keywords -->
+        <h3>Keywords</h3>
+        <p>${art.keywords}</p>
+        <!-- Body -->
+        <h3>Body</h3>
+        <p>${art.body}</p>
+        <!-- Conclusion -->
+        <h3>Conclusion</h3>
+        <p>${art.conclusion}</p>
+        <!-- Summary -->
+        <h3>Summary</h3>
+        <p>${art.summary}</p>
+    `;
+    cards.forEach(card => card.classList.remove("active"));
+    document.querySelector(`.article-card[data-article="${key}"]`).classList.add("active");
+    preview.scrollIntoView({ behavior: "smooth" });
+}
 
-    articles.forEach(article => {
-        article.style.cursor = 'pointer'; // نشانگر دست روی مقاله
-        article.addEventListener('click', function() {
-            const articleContent = `
-                <h2>${article.querySelector('.article-title').innerHTML}</h2>
-                <h3>Abstract</h3>
-                <p>${article.querySelector('.article-abstract').innerHTML}</p>
-                <h3>Keywords</h3>
-                <p>${article.querySelector('.article-keywords').innerHTML}</p>
-                <h3>Body</h3>
-                <p>${article.querySelector('.article-body').innerHTML}</p>
-                <h3>Conclusion</h3>
-                <p>${article.querySelector('.article-conclusion').innerHTML}</p>
-                <h3>Summary</h3>
-                <p>${article.querySelector('.article-summary').innerHTML}</p>
-            `;
+cards.forEach(card => {
+    card.addEventListener("click", () => {
+        const key = card.getAttribute("data-article");
+        showArticle(key);
+    });
+});
 
-            // اگر همان مقاله دوباره کلیک شد، بسته شود
-            if(openArticle === article) {
-                displayBox.style.display = 'none';
-                displayBox.innerHTML = '';
-                openArticle = null;
-            } else {
-                displayBox.innerHTML = articleContent;
-                displayBox.style.display = 'block';
-                openArticle = article;
-                // اسکرول به باکس نمایش مقاله
-                displayBox.scrollIntoView({ behavior: 'smooth' });
-            }
-        });
+// ===== Navbar Scroll Effect =====
+const navbar = document.getElementById("navbar");
+const navButtons = document.querySelectorAll(".nav-btn");
+
+window.addEventListener("scroll", () => {
+    if (window.scrollY > 50) navbar.classList.add("scrolled");
+    else navbar.classList.remove("scrolled");
+});
+
+// ===== Navbar Button Active Effect =====
+navButtons.forEach(button => {
+    button.addEventListener("click", function () {
+        navButtons.forEach(btn => btn.classList.remove("active"));
+        this.classList.add("active");
+        this.style.transform = "scale(0.95)";
+        setTimeout(() => { this.style.transform = "scale(1)"; }, 150);
     });
 });
 </script>
+
 </body>
 </html>
