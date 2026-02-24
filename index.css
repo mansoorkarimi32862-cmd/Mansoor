@@ -18,7 +18,7 @@ body {
 }
 
 /* ===============================
-   NAVBAR (FIXED WITHOUT OVERLAP)
+   Navbar Styles
 ================================= */
 .navbar {
     position: fixed;
@@ -26,28 +26,30 @@ body {
     left: 0;
     width: 100%;
     z-index: 1000;
-
-    padding: 25px 0;
+    padding: 15px 0; /* فاصله داخلی Navbar کمتر شد */
+    background: rgba(20, 20, 30, 0.95);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
     transition: all 0.4s ease;
-
-    background: rgba(20, 20, 30, 0.7);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .navbar.scrolled {
-    padding: 12px 0;
+    padding: 10px 0;
     background: rgba(15, 15, 25, 0.95);
     box-shadow: 0 10px 30px rgba(0,0,0,0.4);
 }
 
 .nav-container {
     max-width: 1200px;
-    margin: auto;
+    width: 100%;
+    margin: 0 auto;
     padding: 0 30px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 30px; /* فاصله لوگو و دکمه‌ها */
 }
 
 .logo {
@@ -61,21 +63,23 @@ body {
     font-size: 18px;
 }
 
+/* ===============================
+   Nav Buttons
+================================= */
 .nav-links {
     display: flex;
-    gap: 20px;
+    gap: 15px; /* فاصله بین دکمه‌ها */
+    align-items: center;
 }
 
 .nav-btn {
     text-decoration: none;
-    padding: 10px 22px;
+    padding: 8px 20px;
     border-radius: 30px;
     font-size: 14px;
     font-weight: 500;
-
     color: #d1d5db;
     background: rgba(255, 255, 255, 0.05);
-
     transition: all 0.3s ease;
 }
 
@@ -87,19 +91,13 @@ body {
 }
 
 .navbar.scrolled .nav-btn {
-    padding: 7px 18px;
+    padding: 6px 18px;
     font-size: 13px;
 }
 
 .nav-btn.active {
     color: white;
     background: linear-gradient(135deg, #2e1065, #3b0764);
-}
-
-/* ===== IMPORTANT FIX ===== */
-/* جلوگیری از رفتن محتوا زیر navbar */
-.main-content {
-    padding-top: 130px;
 }
 
 /* ===============================
