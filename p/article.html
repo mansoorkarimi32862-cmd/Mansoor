@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scientific Articles | Mansoor Portfolio</title>
+<link rel="stylesheet" href="articlelast.css">
+</head>
+<body>
+
+<!-- ===== Navbar ===== -->
+<header class="navbar" id="navbar">
+    <div class="nav-container">
+        <div class="logo">MK Portfolio</div>
+        <nav class="nav-links">
+            <a href="index.html" class="nav-btn">Home</a>
+            <a href="certificate.html" class="nav-btn">Certificate</a>
+            <a href="music.html" class="nav-btn">Music</a>
+            <a href="article.html" class="nav-btn active">Article</a>
+            <a href="roman.html" class="nav-btn">Roman</a>
+        </nav>
+    </div>
+</header>
+
+<!-- ===== Page Content ===== -->
+<div class="page-content">
+    <!-- Articles Header -->
+    <div class="articles-header">
+        <h1>Scientific Articles</h1>
+        <p>Verified, Professional, and Well-Structured Research Articles</p>
+    </div>
+
+    <!-- Articles Main Section -->
+    <div class="articles-main">
+
+        <!-- ===== Article List ===== -->
+        <section class="article-list">
+            <div class="article-card" data-article="article1">
+                <h3>Freelancing and Its Philosophy</h3>
+                <p>Author: Mansoor Karimi | Year: 2025</p>
+            </div>
+            <div class="article-card" data-article="article2">
+                <h3>Data Security in Cloud Computing</h3>
+                <p>Author: Mansoor Karimi | Year: 2024</p>
+            </div>
+            <div class="article-card" data-article="article3">
+                <h3>Human-Computer Interaction Trends</h3>
+                <p>Author: Mansoor Karimi | Year: 2025</p>
+            </div>
+            <div class="article-card" data-article="article4">
+                <h3>Quantum Computing for Beginners</h3>
+                <p>Author: Mansoor Karimi | Year: 2023</p>
+            </div>
+        </section>
+
+        <!-- ===== Article Preview ===== -->
+        <section class="article-preview">
+            <div id="articleContent">
+                <h2>Select an article to preview</h2>
+            </div>
+        </section>
+
+    </div>
+</div>
+
+<script>
+// ===== Article Data =====
+const articles = {
+    article1: {
+        /* ===== Title ===== */
+        title: "Freelancing and Its Philosophy",
+        /* ===== Abstract ===== */
+        abstract: "Freelancing isn’t just an internet thing—it actually has roots way back in history. Back in the 19th century, the term was used for soldiers who offered their skills to whoever needed them, instead of pledging lifelong loyalty. Fast forward a couple of centuries, and we see the same spirit in modern freelancers, but this time in the digital world.
+After the Industrial Revolution, work became centralized. Big companies hired people full-time for predictability and control. But in the 21st century, the information revolution and the global internet changed the game. Companies didn’t always need full-time workers, and young professionals started seeing work as more than just income—they wanted identity, flexibility, and freedom. That’s when modern freelancing really took off, offering freedom of time, place, and skill development on a global scale.
+Today, freelancing is more than just a way to earn money. It’s about building a personal brand, managing your own time, and navigating a competitive but opportunity-rich environment. There are challenges, sure—income instability, tough competition, and high client expectations—but the flexibility, growth potential, and access to global markets make it incredibly appealing. Platforms like Freelancer.com, Upwork, Fiverr, and Toptal have played huge roles in making this ecosystem accessible and organized.
+In short, freelancing has evolved from a historical concept to a modern lifestyle and career choice. It’s shaped by technology, the changing nature of work, and the values of new generations. Understanding this evolution gives anyone curious about freelancing a clear picture of why it works, why it’s growing, and why it’s more than just “online jobs.”,
+
+        /* ===== Keywords ===== */
+        keywords: "AI, Healthcare, Machine Learning, Diagnosis",
+        /* ===== Body ===== */
+        body: "Artificial Intelligence (AI) is revolutionizing healthcare by enabling precise diagnostics, personalized treatment, and predictive analytics. Hospitals are increasingly using AI-driven tools for imaging, patient monitoring, and data analysis...",
+        /* ===== Conclusion ===== */
+        conclusion: "AI technologies are enhancing patient care quality and operational efficiency, yet ethical and privacy considerations remain critical.",
+        /* ===== Summary ===== */
+        summary: "This research highlights the adoption of AI in healthcare, emphasizing both its benefits and the challenges to overcome."
+    },
+    article2: {
+        title: "Data Security in Cloud Computing",
+        abstract: "Cloud computing offers scalability and flexibility but introduces new data security challenges that must be managed carefully.",
+        keywords: "Cloud Computing, Security, Encryption, Privacy",
+        body: "Cloud computing has become integral to modern IT infrastructure, but security risks such as unauthorized access, data breaches, and compliance issues remain significant. Encryption, access control, and continuous monitoring are vital...",
+        conclusion: "Ensuring robust security in cloud environments requires a combination of technological measures and governance policies.",
+        summary: "This paper reviews security threats in cloud computing and offers best practices to safeguard sensitive data."
+    },
+    article3: {
+        title: "Human-Computer Interaction Trends",
+        abstract: "This paper examines recent trends in HCI, focusing on usability, accessibility, and emerging interaction paradigms.",
+        keywords: "HCI, User Experience, Accessibility, Interaction Design",
+        body: "Human-Computer Interaction (HCI) is evolving with the advent of new technologies like AR/VR, voice assistants, and adaptive interfaces. Understanding user needs and behavior is crucial for designing intuitive systems...",
+        conclusion: "Future HCI research should prioritize inclusive, efficient, and natural interaction methods.",
+        summary: "The study explores innovative HCI trends and emphasizes the importance of user-centered design."
+    },
+    article4: {
+        title: "Quantum Computing for Beginners",
+        abstract: "An introductory overview of quantum computing, its principles, and potential applications.",
+        keywords: "Quantum Computing, Qubits, Superposition, Algorithms",
+        body: "Quantum computing leverages principles of quantum mechanics, including superposition and entanglement, to perform computations far beyond classical computers' capabilities. Beginners must understand qubits, gates, and basic algorithms...",
+        conclusion: "While quantum computing is still emerging, it promises revolutionary advancements in problem-solving and computational efficiency.",
+        summary: "This article introduces fundamental concepts of quantum computing for newcomers and explores its transformative potential."
+    }
+};
+
+// ===== Article Preview Function =====
+const cards = document.querySelectorAll(".article-card");
+const preview = document.getElementById("articleContent");
+
+function showArticle(key) {
+    const art = articles[key];
+    preview.innerHTML = `
+        <!-- Title -->
+        <h2>${art.title}</h2>
+        <!-- Abstract -->
+        <h3>Abstract</h3>
+        <p>${art.abstract}</p>
+        <!-- Keywords -->
+        <h3>Keywords</h3>
+        <p>${art.keywords}</p>
+        <!-- Body -->
+        <h3>Body</h3>
+        <p>${art.body}</p>
+        <!-- Conclusion -->
+        <h3>Conclusion</h3>
+        <p>${art.conclusion}</p>
+        <!-- Summary -->
+        <h3>Summary</h3>
+        <p>${art.summary}</p>
+    `;
+    cards.forEach(card => card.classList.remove("active"));
+    document.querySelector(`.article-card[data-article="${key}"]`).classList.add("active");
+    preview.scrollIntoView({ behavior: "smooth" });
+}
+
+cards.forEach(card => {
+    card.addEventListener("click", () => {
+        const key = card.getAttribute("data-article");
+        showArticle(key);
+    });
+});
+
+// ===== Navbar Scroll Effect =====
+const navbar = document.getElementById("navbar");
+const navButtons = document.querySelectorAll(".nav-btn");
+
+window.addEventListener("scroll", () => {
+    if (window.scrollY > 50) navbar.classList.add("scrolled");
+    else navbar.classList.remove("scrolled");
+});
+
+// ===== Navbar Button Active Effect =====
+navButtons.forEach(button => {
+    button.addEventListener("click", function () {
+        navButtons.forEach(btn => btn.classList.remove("active"));
+        this.classList.add("active");
+        this.style.transform = "scale(0.95)";
+        setTimeout(() => { this.style.transform = "scale(1)"; }, 150);
+    });
+});
+</script>
+
+</body>
+</html>
