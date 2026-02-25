@@ -1,0 +1,129 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mansoor Karimi Portfolio</title>
+<link href="index.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+<!-- ===== Modern Animated Navbar ===== -->
+<header class="navbar" id="navbar">
+    <div class="nav-container">
+        <!-- 🔹 نام برند -->
+        <div class="logo">MK Portfolio</div>
+
+        <!-- 🔹 دکمه‌ها اضافه شدند -->
+        <nav class="nav-links">
+            <a href="index.html" class="nav-btn active">Home</a>
+            <a href="certificate.html" class="nav-btn">Certificate</a>
+            <a href="music.html" class="nav-btn">Music</a>
+            <a href="article.html" class="nav-btn">Article</a>
+            <a href="roman.html" class="nav-btn">Roman</a>
+        </nav>
+    </div>
+</header>
+
+<div class="page-content">
+    <!-- برای تست اسکرول -->
+    <div style="height:2000px;"></div>
+</div>
+
+<!-- ===============================
+     بخش About Me
+================================= -->
+<div class="about-box">
+    <h2>About Me</h2>
+</div>
+
+<!-- ===============================
+     بخش ویدیو
+================================= -->
+<div class="video-wrapper">
+    <iframe src="myvideo.mp4" title="Your Video Here"> </iframe>
+</div>
+
+<!-- ===============================
+     Section Header با خطوط
+================================= -->
+<div class="section-header">
+    <div class="line"></div>
+    <h2 id="welcome-title"></h2>
+    <div class="line"></div>
+</div>
+
+<!-- ===============================
+     متن خوش آمدگویی
+================================= -->
+<div id="welcome-text-placeholder">
+    <p id="animated-text">
+        Mansoor Karimi, a Computer Science student in the heart of Afghanistan; with human creativity and an army of modern intelligence, wanted to shape a new world and forging deeper connections   
+        between humans and machines.
+    </p>
+</div>
+
+<!-- ===============================
+     اسکریپت تایپ کردن متن و فعال کردن دکمه‌ها
+================================= -->
+<script>
+    // تایپ متن خوش آمدگویی
+    const welcomeTitle = document.getElementById('welcome-title');
+    const welcomeText = "Welcome";
+    let welcomeIndex = 0;
+    function typeWelcome() {
+        if (welcomeIndex < welcomeText.length) {
+            welcomeTitle.innerHTML += welcomeText[welcomeIndex];
+            welcomeIndex++;
+            setTimeout(typeWelcome, 150);
+        }
+    }
+
+    const textElement = document.getElementById('animated-text');
+    const originalText = textElement.innerText;
+    textElement.innerText ="";
+    let charIndex = 0;
+    function typeText() {
+        if (charIndex < originalText.length) {
+            const char = originalText[charIndex];
+            const span = document.createElement('span');
+            span.innerText = char;
+            textElement.appendChild(span);
+            charIndex++;
+            setTimeout(typeText, 30);
+        }
+    }
+
+    textElement.addEventListener("mouseover", (e) => {
+        if (e.target.tagName === "SPAN") {
+            e.target.style.color ="#cfa6ff";
+            e.target.style.transform ="translateY(-5px)";
+            e.target.style.transition ="all 0.2s";
+        }
+    });
+
+    textElement.addEventListener("mouseout", (e) => {
+        if (e.target.tagName === "SPAN") {
+            e.target.style.color ="";
+            e.target.style.transform ="translateY(0)";
+        }
+    });
+
+    typeWelcome();
+    setTimeout(typeText, 1000);
+
+    // فعال کردن دکمه‌های Navbar
+    const navButtons = document.querySelectorAll(".nav-btn");
+    navButtons.forEach(button => {
+        button.addEventListener("click", function () {
+            navButtons.forEach(btn => btn.classList.remove("active"));
+            this.classList.add("active");
+
+            this.style.transform = "scale(0.95)";
+            setTimeout(() => { this.style.transform = "scale(1)"; }, 150);
+        });
+    });
+</script>
+
+</body>
+</html>

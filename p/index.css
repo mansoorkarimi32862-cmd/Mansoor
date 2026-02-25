@@ -1,4 +1,4 @@
-@charset "utf-8";
+﻿@charset "utf-8";
 
 /* ===============================
    Global Reset & Fonts
@@ -14,7 +14,7 @@ body {
     background: url(p/background.png) center center/cover no-repeat fixed;
     color: #fff;
     overflow-x: hidden;
-    padding-top: 70px; /* 👈 اصلاح شد: برابر ارتفاع واقعی Navbar */
+    padding-top: 10px; /* فاصله محتوا از Navbar */
 }
 
 /* ===============================
@@ -25,8 +25,8 @@ body {
     top: 0;
     left: 0;
     width: 100%;
-    height: 70px; /* 👈 ارتفاع ثابت تعریف شد */
     z-index: 1000;
+    padding: 1px 0; /* فاصله داخلی Navbar کمتر شد */
     background: rgba(20, 20, 30, 0.95);
     display: flex;
     justify-content: center;
@@ -36,6 +36,7 @@ body {
 }
 
 .navbar.scrolled {
+    padding: 10px 0;
     background: rgba(15, 15, 25, 0.95);
     box-shadow: 0 10px 30px rgba(0,0,0,0.4);
 }
@@ -48,7 +49,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 30px;
+    gap: 30px; /* فاصله لوگو و دکمه‌ها */
 }
 
 .logo {
@@ -58,12 +59,16 @@ body {
     transition: all 0.3s ease;
 }
 
+.navbar.scrolled .logo {
+    font-size: 18px;
+}
+
 /* ===============================
    Nav Buttons
 ================================= */
 .nav-links {
     display: flex;
-    gap: 15px;
+    gap: 15px; /* فاصله بین دکمه‌ها */
     align-items: center;
 }
 
@@ -85,6 +90,11 @@ body {
     transform: translateY(-2px);
 }
 
+.navbar.scrolled .nav-btn {
+    padding: 6px 18px;
+    font-size: 13px;
+}
+
 .nav-btn.active {
     color: white;
     background: linear-gradient(135deg, #2e1065, #3b0764);
@@ -96,7 +106,7 @@ body {
 .about-box {
     width: 80%;
     max-width: 900px;
-    margin: 40px auto 30px auto;
+    margin: 20px auto 30px auto; /* فاصله بالایی کمتر شد */
     padding: 20px 30px;
     background: rgba(30, 30, 30, 0.75);
     border-radius: 12px;
