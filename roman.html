@@ -36,9 +36,9 @@
 
   <section class="novel-selection">
     <div class="novel-buttons">
-      <button class="novel-btn" data-novel="novel1">The Lost Kingdom</button>
-      <button class="novel-btn" data-novel="novel2">Shadows of Time</button>
-      <button class="novel-btn" data-novel="novel3">Whispers in the Wind</button>
+      <button class="novel-btn" data-novel="novel1">Psychotic</button>
+      <button class="novel-btn" data-novel="novel2">Honor</button>
+      <button class="novel-btn" data-novel="novel3">Emotional war</button>
     </div>
 
     <div class="chapter-buttons" id="chapterButtons">
@@ -64,61 +64,417 @@ const novelContent = document.getElementById('novelContent');
 const novelButtons = document.querySelectorAll('.novel-btn');
 const chapterButtons = document.querySelectorAll('.chapter-btn');
 
+let globalDotInterval;
+
+/* =============================
+   AUTO Coming Soon Detector
+============================= */
+function activateComingSoonAnimation() {
+
+  clearInterval(globalDotInterval);
+
+  const paragraphs = novelContent.querySelectorAll("p");
+
+  paragraphs.forEach(p => {
+
+    if (p.textContent.toLowerCase().includes("coming soon")) {
+
+      let dots = 0;
+
+      globalDotInterval = setInterval(() => {
+        dots = (dots % 3) + 1;
+
+        p.innerHTML = `Coming soon<span style="
+          color:#cfa6ff;
+          text-shadow:0 0 10px #b484ff;
+          transition:0.3s;">${".".repeat(dots)}</span>`;
+
+      }, 500);
+    }
+  });
+}
+
+/* =============================
+   DATA
+============================= */
 const novels = {
   novel1: {
-    title: "The Lost Kingdom",
+    title: "Psychotic",
     chapters: {
-      chapter1: "Chapter 1: The journey begins in a misty land...",
-      chapter2: "Chapter 2: Encounters with mysterious allies...",
-      chapter3: "Chapter 3: Betrayal shakes the kingdom...",
-      chapter4: "Chapter 4: The final battle approaches...",
-      chapter5: "Chapter 5: Resolution and a new dawn..."
+      chapter1: `Novel Name: Psychotic
+Genre: Romantic, War, Patriotic
+Summary:
+A young man named Arash has been secretly assigned by the government to fight against foreign spies who have infiltrated the country. He lives in the shadows—no fame, no recognition, no normal life. His duty has always come before everything else. But in the middle of dangerous missions and constant threats, he meets a girl named Zahra. What begins as a simple encounter slowly turns into a deep and complicated love story. A love that grows between bullets, secrets, loyalty, and betrayal. After many emotional and intense events, their story unfolds in a dramatic and unforgettable way.
+Beginning of the Story:
+Kabir: Ahmad, seriously… was there no other car on this road? I can’t even breathe in here. Wake him up too, Rustam.
+Rustam: who had just woken up, let out a long sigh What happened? Did we arrive?
+Ahmad: No, we were waiting for Your Majesty to wake up so we could arrive properly.
+Rustam: Well, now I’m awake. So that means we’re there, right?
+Ahmad: Not yet. Maybe ten more minutes.
+Rustam: Then wake me up when we get there.
+He rested his head back on Kabir’s shoulder again.
+Kabir swallowed his anger and shot a sharp look at Ahmad.
+Ahmad: What’s my fault? How was I supposed to know the car would be this crowded? Relax, we’re almost there. Close your eyes and when you open them, we’ll be there.
+Kabir: Close my eyes and trust you? Do you remember the last time I trusted you?
+Ahmad: Oh no… here we go again.
+Kabir: Why shouldn’t I start? Instead of putting salt in the food, you poured sugar. Because of you, I had to stay hungry for a whole day.
+Ahmad: Not “we.” You. We ate it. And it was actually good. Right, Arash?
+Arash…
+Ahmad:
+As you can see, we argue a lot. But the truth is, the four of us are more than friends. Me, Kabir, Rustam, and our commander Arash. We might fight on the surface and rarely show affection, but we’ve risked our lives for each other more times than I can count. Between us, we grew up together. We’ve been through wars together. We’ve done things no one would understand. That’s why our friendship is stronger than it looks. Even our arguments are just another sign of it.
+Everything felt normal. Just like always.
+Except… something wasn’t right.
+Whenever we argued, Arash would usually step in, lecture us about how we were the hope of the country and shouldn’t waste time on childish fights. But this time… he was different. For the first time in my life, I saw him distracted. His focus wasn’t there.
+I called his name once. No response.
+Twice. Nothing.
+He was staring ahead at something. His eyes were fixed, shining in a way I had never seen before. It was as if he didn’t want to blink, afraid the moment would disappear.
+We moved a little further down the road when suddenly Arash said, “Stop. I’m getting off.”
+The car stopped.
+Kabir: What? But we’re not even at the house yet. Don’t tell me we’re sleeping on the street again. I hate that.
+Me: Arash, what are you doing? We haven’t reached our new place yet. Where are you going?
+Arash: Not we. Me. I have something to do. I’ll come later.
+It was the strangest thing he had ever done.
+We weren’t ordinary people. At any moment, someone could attack us. He was the one who always said in our line of work there is no such thing as personal matters. We are each other’s lives. We never separate.
+And now… he was leaving us behind.
+But he was our leader. We couldn’t stop him.
+Arash:
+Humans are strange creatures.
+Sometimes they know very well that something will hurt them… and yet they still walk toward it.
+No matter how pure a person tries to be, there will always be a moment of weakness. The worst part is knowing it’s a mistake and still being unable to stop yourself.
+I’m not saying I’m an angel.
+But with the weight I carry on my shoulders, I never had the luxury to follow my desires. I always had to do what was right for everyone else.
+Sometimes I feel like I never truly felt alive… until I saw her.
+A girl with green eyes. Pale skin. Golden hair. She looked at me for just a second, then lowered her gaze shyly.
+There had never been a place for girls in my life. I was taught they were distractions. In a life like mine, love is a weakness.
+Maybe for others that isn’t always true. But for me? It definitely was.
+And yet… I couldn’t look away.
+There was something about her. Something calm and warm in the middle of the chaos that was my life. For the first time, I didn’t want to control myself. For the first time, following my heart didn’t feel wrong.
+With difficulty, I forced myself to look away.
+At the first stop, she got off the car.
+Without thinking, I followed.
+Yes, I left my friends behind. Yes, it was irresponsible. Yes, enemies could be watching. I knew all that.
+But I also knew that if she disappeared now… I might never see her again.
+She walked quickly. Almost like she knew I was following her. Almost like she was running. But she had no idea who she was dealing with. My whole life had been training for tracking and shadows.
+She entered a small shop. I followed her inside.
+Shopkeeper: Welcome, sir. What can I get you?
+I didn’t know what to say. I just stood there.
+Shopkeeper: You look thirsty. Water?
+Me: Yes… please.
+Shopkeeper: Zahra, bring a bottle of water for the gentleman.
+Zahra.
+So that was her name.
+Zahra:
+Almost every girl has a prince in her mind.
+A prince no one else has ever seen.
+For some girls, he doesn’t even exist. Just a dream. For others, he exists—but only in imagination. I think I am one of those rare cases.
+My prince exists. And not just in my mind. He is real.
+Even if a girl doesn’t care about love or marriage, somewhere in her heart there is someone. Some girls fight for their prince. Some wait for him to fight for them. And some… like me… can only pray.
+Today is one of the most beautiful days of my life.
+Because my prince is sitting right in front of me. And I’m bringing him water.
+I don’t know what will happen next. I leave everything to God.
+God… please protect this impossible, one-sided love of mine.
+Arash:
+The shop was small. Struggling. It looked like it was slowly collapsing financially. But I didn’t care about that.
+I cared that the shopkeeper had called her his sister.
+And that she was walking toward me.
+Every step she took made my heartbeat faster. She handed me the bottle of water, her green eyes meeting mine.
+Shopkeeper: I haven’t seen you around here before. You’re new, right?
+Me: Yes. We just arrived a few minutes ago.
+Shopkeeper: Alone?
+Me: No. With a few friends. We rented a house together.
+Shopkeeper: I’m Karim. This is my sister Zahra. We’ve been running this shop for ten years. Everyone here knows us.
+Me: It doesn’t look like business is good.
+Karim gave a small, tired smile.
+Karim: We’re running out of goods. Out of money too. It was our father’s shop. After he passed away, we decided to keep it alive. We don’t know how long we can continue.
+Me: Why don’t you take a partner?
+Karim laughed slightly.
+Karim: Who would invest in a dying shop?
+Me: I will.
+He froze.
+Karim: Are you joking?
+Me: No. I’m new here. I need work anyway.
+Karim: Why not open your own shop with your friends?
+I don’t know. Maybe I was being foolish.
+Or maybe for the first time in my life, I was choosing something for myself.
+Me: So… are you willing to be partners?
+Karim looked at me carefully.
+Karim: What’s your name, partner?
+Before I could answer—
+Zahra: His name is Arash.
+Both Karim and I looked at her in shock.
+Especially me.
+Because I had never told her my name.
+`,
+      chapter2: `Arsh:
+It has been almost twenty days since Karim and I became partners. Now both of us work together in the shop. Karim handles the financial part, and I take care of cleaning, organizing, and whatever else needs to be done. At night, I return to the house I share with my friends.
+Speaking of my friends… they are not happy at all.
+After all, I am their leader. They came to this city because of me. They trusted me. But instead of leading them, I left everything in their hands and spent my days working in a small shop.
+Of course, the shop was just an excuse.
+The real reason I stepped into that shop every single day was Zahra.
+Every day she brought food she had cooked herself. Every day we talked for half an hour… sometimes an hour. Slowly we became close. Very close.
+To be honest, I had never been this happy in my entire life. I wished everything would continue exactly like this.
+But on the tenth day… everything changed.
+That day I was sweeping the shop. Karim was not there. Zahra came toward the shop wearing a new dress. She looked… different. Beautiful in a way that made my heart pause.
+When she saw me sweeping, she quickly took the broom from my hand.
+“What are you doing?”
+“You can see… I’m sweeping.”
+She smiled — a smile like the moon. When she smiled, it felt like the most beautiful image in the world was standing in front of me.
+“Yes, I see. But from what I see, you are making more mess than cleaning. Look at this. You made everything dirtier.”
+Then she laughed softly.
+“I think this is the first time in your life you’ve touched a broom. Am I right?”
+I didn’t even know what I was doing. I just smiled and looked at her.
+At that moment Karim entered.
+“Zahra, sister, what are you doing here?”
+“I brought your food.”
+“But we already ate. Why did you prepare it so early? And why are you wearing this new dress?”
+“Brother, did you forget? Tonight is our neighbor’s daughter’s wedding. Maryam and I are getting ready to go. That’s why I brought your food early. You allow me, right?”
+“Since when did you need my permission? If you’re ready, then go.”
+Zahra:
+Humans are strange creatures.
+Imagine spending hours getting ready… wearing your best clothes… wanting to look like the most beautiful person in the world… not for everyone — just for one person. Only for five minutes.
+And the painful part?
+Everyone thinks you dressed up for the event.
+They don’t understand.
+The event is not important.
+The person is important.
+Only God saw my eyes at that moment. Only He knew what my heart felt when I left the shop.
+I tried so hard not to cry on the way home. But when I reached the house, it was just me… and my God.
+I sat behind the door and cried as much as I could.
+“God, I don’t know what to do. But You know everything. You brought everything this far like a miracle because I left it in Your hands. Again… I leave my destiny to You. Please take care of my love.”
+Back at the shop, Arsh and Karim were eating when customers started knocking on the locked door.
+“It’s closed! Come later!” Arsh shouted from inside.
+Karim placed his hand on Arsh’s shoulder.
+“Do you understand something, Arsh? Before you came, these people wouldn’t even buy from me if I begged them. Now they stand behind a locked door waiting. It’s all because of you. You didn’t just bring investment… you brought blessing.”
+Arsh nodded silently.
+After finishing his food, he took a letter out of his pocket.
+It read:
+Zahra,
+Maybe it’s too early to say this. Maybe you don’t feel the same. But I need to tell you my truth. From the first moment I saw you, I fell in love. And every day, it grows more.
+I left my friends, my responsibilities, my whole life… just to work in your shop so I could see you every day.
+I tried to hide it, but I can’t anymore. I don’t know what your reaction will be. Whatever it is, I promise I will love you until the end of my life… even if I am forced never to see you again.
+—	Arsh
+He placed the letter inside the food container, thinking Zahra would wash the dishes at night and find it.
+But he forgot one thing.
+Zahra had gone to the wedding.
+Karim went to wash the dishes.
+And when he found the letter…
+Something inside him broke.
+He started throwing plates, smashing everything.
+“I’ll kill you, Arsh!”
+Arsh:
+That night I couldn’t sleep.
+What if she was angry?
+What if she thought badly of me?
+What if she rejected me?
+Morning came.
+I got dressed to go to the shop when an unknown number called.
+I didn’t feel like talking to anyone. But maybe… maybe it was her.
+I answered.
+It was Zahra.
+The moment I heard her voice, my tongue froze.
+“Arsh… I read your letter. I want to talk to you in person. I’m waiting near the river.”
+The river?
+That was one of the most abandoned places in the city.
+Why there?
+Questions flooded my mind. But I went anyway.
+When I arrived, the sun had just risen. I told myself, “You fool, Arsh. Who comes this early? Just wait.”
+Minutes turned into hours.
+I saw both sunrise and sunset by that river.
+She never came.
+“River… didn’t you see Zahra? A tall girl with golden hair and green eyes? If you saw her… tell her I’m here.”
+My mind spoke:
+“Look at yourself. Talking to a river? You left your friends. You forgot your mission. You invested in a small shop for a dream. And now you wait like a fool. She played you.”
+Then my heart replied:
+“What if something happened to her? What if she comes later and we’re not here?”
+“Enough!” I whispered. “Why won’t you leave me alone?”
+Finally I left.
+When I got signal again, I saw more than ten missed calls.
+It was Karim.
+He sounded calm.
+“Arsh, you didn’t come today. I was worried. Everything okay?”
+“Yes… I just went out for some air.”
+“I need to talk to you about something.”
+“I also need to talk to you. I’m coming tonight.”
+The truth?
+Nothing mattered to me anymore except one thing.
+I was going to ask Karim for Zahra’s hand.
+When I reached near their house, I saw Zahra standing at the corner of the street.
+She looked… different.
+Angry. Afraid. Hiding something.
+“You did something very wrong today,” I said. “You made me wait. But it doesn’t matter anymore. I said what I had to say. Now it’s time to act. I’m going to ask your brother for your hand.”
+Her face turned pale.
+“Are you crazy? You say you fell in love in ten days, and now you want marriage? Do you think this is a joke?”
+“I don’t care about anything anymore. I love you. Nothing can stop me. Not even your brother.”
+I was only a few steps away from the door when—
+Someone grabbed me from behind.
+A blade cut into my shoulder.
+Pain? I’ve been stabbed more than ten times before.
+But this time it was different.
+Because this time…
+The knife was in Zahra’s hand.
+Her hands were shaking. Her eyes… filled with something I couldn’t understand.
+“Why, Zahra?”
+Her lips trembled.
+“Because I don’t want to see you again. I hate you. I will do anything so you never stand in front of me again. Even if I have to send you to the other world.”
+That was the last thing I heard before everything went dark.
+Maybe it was the most complete death in the world.
+A knife in my body.
+Her words in my soul.
+And the person I loved… standing over me while I was dying.
+`,
+      chapter3: `Kabir:
+Doctor, how is the patient now?
+Doctor:
+He lost a lot of blood, but you were lucky. That good man informed us in time. The danger has passed. He is a little weak from the blood loss, but the good news is that Ahmed’s blood matched perfectly. We transfused it to Arsh. Everything is under control.
+Rostam:
+By God, if anything happens to Arsh, Kabir… I swear I’ll burn this whole city down. I swear. No one… not you, not anyone… will be able to stop me.
+Kabir opened his mouth to say something, but Rostam cut him off.
+Kabir:
+What are you saying? Calm down, Rostam. Don’t lose your mind. You’re the only one who can give Arsh orders. If something happens to him, no one else can stop it.
+Kabir (continued):
+You’re insane. Don’t you realize who you’re talking about? It’s not just your brother, Rostam. Just once… if I find out who did this to Arsh, even if the whole city was involved, I’ll erase their plans from the map.
+Rostam:
+Erase? No… we erase it together.
+Arsh:
+I saw everything… I went to propose to Zahra. But my dearest… the person I loved the most… stabbed me herself. Thank God it was just a nightmare. I don’t even want to think about it anymore.
+But now… where am I?
+This place isn’t like our home… isn’t like anywhere I’ve ever been.
+If all of this had been real… what would the people around me think? Everything is white. I tried to sit up… but my body is full of wounds.
+Next to me… the same knife Zahra had used in my dream.
+What does this mean? Was it all real? Why… God… why didn’t I die? How did I end up here?
+No one was around when I got stabbed… I don’t think anyone could have carried me here. Then who did?
+At that moment, my phone rang.
+I wanted to hang up… but I couldn’t.
+The call was from my mother.
+My hands moved toward the decline button… but I couldn’t. I answered.
+Arsh:
+Yes… mother?
+I didn’t know why… I just started crying.
+Arsh’s Mother:
+My son… are you really crying? Oh, my boy… since your father died, I haven’t seen you cry. And now… at this age… you cry. My son… tell me… who made you cry? Who made my boy’s tears fall?
+Arsh:
+Mother… your son… isn’t well. He can’t help it. He’s never felt so weak.
+My sobs were so loud that my friends outside could hear me. Rostam wanted to enter the room… but Ahmed said:
+“Wait. Arsh is talking to his mother. Let him finish.”
+Kabir and Rostam looked at Ahmed, surprised.
+Kabir:
+But how do you know?
+Ahmed just looked at them silently.
+Arsh’s Mother:
+My son… I wanted to tell you good news. I thought I could make you happy… but instead… you upset me with your words.
+Arsh:
+Good news? What good news, mother?
+Arsh’s Mother:
+Your older brother, Matin, is getting married. I wanted to tell you to come… I didn’t know you were feeling so down.
+Arsh:
+What, mother? We’ve been in this city for a month. And suddenly… this wedding? How did it happen so fast?
+Mother:
+It was planned before. I just didn’t tell you. I didn’t want your mind distracted from your work. But now… we’re waiting for you. If you can, come quickly. Your brother is waiting.
+Arsh:
+Don’t worry, mother. I’ll be there.
+He hung up. It was two in the morning, and everything was silent.
+Slowly, he got up. His hand touched the IV… his wound was still fresh. He got dressed and stepped outside.
+Outside, Ahmed, Kabir, and Rostam were sleeping on the ground.
+Ahmed:
+Arsh, what are you doing? Your wounds are fresh. Why are you up?
+I looked at my injuries… then at my friends.
+They spoke as if this was the first time they had seen me. On one hand, they thought these wounds would leave me helpless. On the other, they slept like addicts…
+Kabir:
+I don’t understand, Arsh. When we saw you like this, we were terrified. We didn’t know what to do. Sure, we’ve all been injured before, but we were always with you. This is the first time we were away. We thought someone attacked you. Now tell us… who did this to you? Who’s behind it? So we can destroy this city for them.
+Arsh:
+Come with me. I’ll explain everything along the way..............
+
+`,
+      chapter4: `Coming soon`,
+      chapter5: `Coming soon`
     }
   },
-  novel2: { title: "Shadows of Time", chapters: null },
-  novel3: { title: "Whispers in the Wind", chapters: null }
+  novel2: { title: "Honor", chapters: null },
+  novel3: { title: "Emotional War", chapters: null }
 };
 
+/* =============================
+   NOVEL BUTTON
+============================= */
 novelButtons.forEach(btn => {
   btn.addEventListener('click', () => {
+
+    clearInterval(globalDotInterval);
+
     const novelKey = btn.getAttribute('data-novel');
+
     if (novels[novelKey].chapters) {
-      novelContent.innerHTML = `<h2>${novels[novelKey].title}</h2><p>Choose a chapter to start reading...</p>`;
+
+      novelContent.innerHTML = `
+        <h2>${novels[novelKey].title}</h2>
+        <p>Choose a chapter to start reading...</p>
+      `;
+
       document.getElementById('chapterButtons').style.display = 'flex';
+
     } else {
-      novelContent.innerHTML = `<h2>${novels[novelKey].title}</h2><p>Coming soon...</p>`;
+
+      novelContent.innerHTML = `
+        <h2>${novels[novelKey].title}</h2>
+        <p>Coming soon</p>
+      `;
+
       document.getElementById('chapterButtons').style.display = 'none';
     }
+
+    activateComingSoonAnimation();
+    window.scrollTo({ top: 0, behavior: "smooth" });
   });
 });
 
+/* =============================
+   CHAPTER BUTTON
+============================= */
 chapterButtons.forEach(btn => {
   btn.addEventListener('click', () => {
+
+    clearInterval(globalDotInterval);
+
     const chapterKey = btn.getAttribute('data-chapter');
-    const novelTitle = "The Lost Kingdom";
+    const novelTitle = novels.novel1.title;
     const text = novels.novel1.chapters[chapterKey];
-    if(text){
-      novelContent.innerHTML = `<h2>${novelTitle} - ${btn.textContent}</h2><p>${text}</p>`;
+
+    if (text) {
+
+      const paragraphs = text
+        .split(/\n+/)
+        .map(p => `<p>${p.trim()}</p>`)
+        .join("");
+
+      novelContent.innerHTML = `
+        <h2>${novelTitle} - ${btn.textContent}</h2>
+        ${paragraphs}
+      `;
+
+      activateComingSoonAnimation();
+      window.scrollTo({ top: 0, behavior: "smooth" });
     }
   });
 });
 
-// Navbar behavior
+/* =============================
+   NAVBAR EFFECT
+============================= */
 const navbar = document.getElementById("navbar");
 const navButtons = document.querySelectorAll(".nav-btn");
 
 window.addEventListener("scroll", () => {
-    if (window.scrollY > 50) navbar.classList.add("scrolled");
-    else navbar.classList.remove("scrolled");
+  if (window.scrollY > 50) navbar.classList.add("scrolled");
+  else navbar.classList.remove("scrolled");
 });
 
 navButtons.forEach(button => {
-    button.addEventListener("click", function () {
-        navButtons.forEach(btn => btn.classList.remove("active"));
-        this.classList.add("active");
-        this.style.transform = "scale(0.95)";
-        setTimeout(() => { this.style.transform = "scale(1)"; }, 150);
-    });
+  button.addEventListener("click", function () {
+    navButtons.forEach(btn => btn.classList.remove("active"));
+    this.classList.add("active");
+    this.style.transform = "scale(0.95)";
+    setTimeout(() => { this.style.transform = "scale(1)"; }, 150);
+  });
 });
 </script>
 
