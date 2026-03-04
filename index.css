@@ -48,7 +48,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap; /* 👈 برای ریسپانسیو */
+    flex-wrap: wrap; /* برای ریسپانسیو */
     gap: 20px;
 }
 
@@ -66,19 +66,23 @@ body {
     display: flex;
     gap: 15px;
     align-items: center;
-    flex-wrap: wrap; /* 👈 برای موبایل */
+    flex-wrap: wrap; /* برای موبایل */
     justify-content: center;
 }
 
 .nav-btn {
     text-decoration: none;
-    padding: 8px 20px;
+    padding: 0.5em 1.5em; /* padding نسبی */
     border-radius: 30px;
-    font-size: 14px;
+    font-size: clamp(12px, 1.2vw, 16px); /* فونت ریسپانسیو */
     font-weight: 500;
     color: #d1d5db;
     background: rgba(255, 255, 255, 0.05);
     transition: all 0.3s ease;
+    white-space: nowrap; /* متن داخل دکمه شکسته نشود */
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .nav-btn:hover {
@@ -190,8 +194,8 @@ body {
     .about-box h2 { font-size: 1.5rem; }
     #animated-text { font-size: 1rem; }
 
-    /* دکمه‌ها ستون‌بندی شوند */
-    .nav-btn { flex: 1 1 45%; font-size: 13px; margin: 5px 0; }
+    /* دکمه‌ها ستون‌بندی شوند و ریسپانسیو باشند */
+    .nav-btn { flex: 1 1 45%; margin: 5px 0; }
 }
 
 @media (max-width: 480px) {
@@ -199,5 +203,7 @@ body {
     .section-header h2 { font-size: 1.3rem; }
     .about-box h2 { font-size: 1.2rem; }
     #animated-text { font-size: 0.95rem; }
-    .nav-btn { flex: 1 1 100%; font-size: 12px; }
+
+    /* دکمه‌ها روی موبایل کامل عرض */
+    .nav-btn { flex: 1 1 100%; font-size: 12px; margin: 5px 0; }
 }
