@@ -44,11 +44,12 @@ body {
     max-width: 1200px;
     width: 100%;
     margin: 0 auto;
-    padding: 0 30px;
+    padding: 0 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 30px;
+    flex-wrap: wrap; /* 👈 برای ریسپانسیو */
+    gap: 20px;
 }
 
 .logo {
@@ -65,6 +66,8 @@ body {
     display: flex;
     gap: 15px;
     align-items: center;
+    flex-wrap: wrap; /* 👈 برای موبایل */
+    justify-content: center;
 }
 
 .nav-btn {
@@ -187,17 +190,8 @@ body {
     .about-box h2 { font-size: 1.5rem; }
     #animated-text { font-size: 1rem; }
 
-    /* ریسپانسیو دکمه‌ها */
-    .nav-links {
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 10px;
-    }
-    .nav-btn {
-        flex: 1 1 45%;
-        text-align: center;
-        font-size: 13px;
-    }
+    /* دکمه‌ها ستون‌بندی شوند */
+    .nav-btn { flex: 1 1 45%; font-size: 13px; margin: 5px 0; }
 }
 
 @media (max-width: 480px) {
