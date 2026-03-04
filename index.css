@@ -1,4 +1,4 @@
-@charset "utf-8";
+﻿@charset "utf-8";
 
 /* ===============================
    Global Reset & Fonts
@@ -14,7 +14,7 @@ body {
     background: url(p/background.png) center center/cover no-repeat fixed;
     color: #fff;
     overflow-x: hidden;
-    padding-top: 70px; /* 👈 اصلاح شد: برابر ارتفاع واقعی Navbar */
+    padding-top: 70px; /* ارتفاع Navbar */
 }
 
 /* ===============================
@@ -25,7 +25,7 @@ body {
     top: 0;
     left: 0;
     width: 100%;
-    height: 70px; /* 👈 ارتفاع ثابت تعریف شد */
+    height: 70px;
     z-index: 1000;
     background: rgba(20, 20, 30, 0.95);
     display: flex;
@@ -186,6 +186,18 @@ body {
     .section-header h2 { font-size: 1.6rem; }
     .about-box h2 { font-size: 1.5rem; }
     #animated-text { font-size: 1rem; }
+
+    /* ریسپانسیو دکمه‌ها */
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+    .nav-btn {
+        flex: 1 1 45%;
+        text-align: center;
+        font-size: 13px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -193,4 +205,5 @@ body {
     .section-header h2 { font-size: 1.3rem; }
     .about-box h2 { font-size: 1.2rem; }
     #animated-text { font-size: 0.95rem; }
+    .nav-btn { flex: 1 1 100%; font-size: 12px; }
 }
