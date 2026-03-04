@@ -1,18 +1,69 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Mansoor Karimi Portfolio</title>
 <link href="index.css" rel="stylesheet" type="text/css">
+<style>
+/* ===== Mobile/Desktop Alert Styles ===== */
+#screen-alert {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%) translateY(-100%);
+    background: linear-gradient(135deg, #6b21a8, #8b5cf6);
+    color: #fff;
+    padding: 15px 25px;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.4);
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 1rem;
+    z-index: 9999;
+    max-width: 90%;
+    text-align: center;
+    opacity: 0;
+    transition: all 0.6s ease;
+}
+
+#screen-alert.show {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+}
+
+#screen-alert button {
+    margin-top: 10px;
+    padding: 6px 18px;
+    border: none;
+    border-radius: 8px;
+    background: #fff;
+    color: #6b21a8;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#screen-alert button:hover {
+    background: #f3e8ff;
+    transform: scale(1.05);
+}
+</style>
 </head>
 <body>
+
+<!-- ===== Screen Alert ===== -->
+<div id="screen-alert">
+    <p>
+        This website is primarily designed for desktop screens. 
+        It works on mobile devices too, but some elements may appear misaligned.
+    </p>
+    <button id="close-alert">OK</button>
+</div>
 
 <!-- ===== Modern Animated Navbar ===== -->
 <header class="navbar" id="navbar">
     <div class="nav-container">
         <div class="logo">MK Portfolio</div>
-
         <nav class="nav-links">
             <a href="index.html" class="nav-btn active">Home</a>
             <a href="certificate.html" class="nav-btn">Certificate</a>
@@ -23,22 +74,15 @@
     </div>
 </header>
 
-<!-- ❌ این بخش حذف شد چون فاصله مصنوعی می‌ساخت -->
-<!--
-<div class="page-content">
-    <div style="height:2000px;"></div>
-</div>
--->
-
 <!-- ===============================
-     بخش About Me
+     About Me
 ================================= -->
 <div class="about-box">
     <h2>About Me</h2>
 </div>
 
 <!-- ===============================
-     بخش ویدیو
+     Video Wrapper
 ================================= -->
 <div class="video-wrapper">
     <iframe src="myvideo.mp4" title="Your Video Here"></iframe>
@@ -54,7 +98,7 @@
 </div>
 
 <!-- ===============================
-     متن خوش آمدگویی
+     Animated Text
 ================================= -->
 <div id="welcome-text-placeholder">
     <p id="animated-text">
@@ -63,7 +107,9 @@
 </div>
 
 <script>
-/* اسکریپت شما بدون تغییر */
+// =======================
+// Typing Animation
+// =======================
 const welcomeTitle = document.getElementById('welcome-title');
 const welcomeText = "Welcome";
 let welcomeIndex = 0;
@@ -93,6 +139,9 @@ function typeText() {
 typeWelcome();
 setTimeout(typeText, 1000);
 
+// =======================
+// Nav Buttons Active Effect
+// =======================
 const navButtons = document.querySelectorAll(".nav-btn");
 navButtons.forEach(button => {
     button.addEventListener("click", function () {
@@ -102,6 +151,31 @@ navButtons.forEach(button => {
         setTimeout(() => { this.style.transform = "scale(1)"; }, 150);
     });
 });
+
+// =======================
+// Screen Size Alert
+// =======================
+const screenAlert = document.getElementById('screen-alert');
+const closeAlert = document.getElementById('close-alert');
+
+function checkScreen() {
+    const width = window.innerWidth;
+    if(width < 768 || width > 1360) {
+        screenAlert.classList.add('show');
+    }
+}
+
+closeAlert.addEventListener('click', () => {
+    screenAlert.style.opacity = '0';
+    screenAlert.style.transform = 'translateX(-50%) translateY(-100%)';
+    setTimeout(() => screenAlert.remove(), 600);
+});
+
+// Run on load
+checkScreen();
+
+// Optional: update on resize
+window.addEventListener('resize', checkScreen);
 </script>
 
 </body>

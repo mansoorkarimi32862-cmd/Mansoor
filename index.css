@@ -185,6 +185,7 @@ body {
 @media (max-width: 1024px) {
     .about-box, .video-wrapper, .section-header, #animated-text { width: 90%; }
     .video-wrapper { height: 400px; }
+    .nav-btn { font-size: clamp(12px, 1.5vw, 15px); }
 }
 
 @media (max-width: 768px) {
@@ -193,8 +194,6 @@ body {
     .section-header h2 { font-size: 1.6rem; }
     .about-box h2 { font-size: 1.5rem; }
     #animated-text { font-size: 1rem; }
-
-    /* دکمه‌ها ستون‌بندی شوند و ریسپانسیو باشند */
     .nav-btn { flex: 1 1 45%; margin: 5px 0; }
 }
 
@@ -203,7 +202,49 @@ body {
     .section-header h2 { font-size: 1.3rem; }
     .about-box h2 { font-size: 1.2rem; }
     #animated-text { font-size: 0.95rem; }
-
-    /* دکمه‌ها روی موبایل کامل عرض */
     .nav-btn { flex: 1 1 100%; font-size: 12px; margin: 5px 0; }
+}
+
+/* ===============================
+   Screen Size Alert (Desktop Warning)
+================================= */
+#screen-alert {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%) translateY(-100%);
+    background: linear-gradient(135deg, #6b21a8, #8b5cf6);
+    color: #fff;
+    padding: 15px 25px;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.4);
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 1rem;
+    z-index: 9999;
+    max-width: 90%;
+    text-align: center;
+    opacity: 0;
+    transition: all 0.6s ease;
+}
+
+#screen-alert.show {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+}
+
+#screen-alert button {
+    margin-top: 10px;
+    padding: 6px 18px;
+    border: none;
+    border-radius: 8px;
+    background: #fff;
+    color: #6b21a8;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#screen-alert button:hover {
+    background: #f3e8ff;
+    transform: scale(1.05);
 }
